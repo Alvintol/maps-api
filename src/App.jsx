@@ -17,10 +17,10 @@ const App = () => {
   useEffect(() => {
     // Takes provided position data and returns only the required latitude and longitude
     const getCurrentLatLon = (position) => {
-      center.latitude = position.coords.latitude;
-      center.longitude = position.coords.longitude;
-      console.log(typeof center.latitude);
-      console.log(typeof center.longitude);
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      setCenter({ lat, lng });
     };
 
     navigator.geolocation.getCurrentPosition(getCurrentLatLon);
