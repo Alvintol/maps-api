@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import './App.css';
 
-function App() {
+const App = () => {
 
-  return (
-    <div className="app">
-      Map
-    </div>
-  )
-}
+  // Imports secret api key from .env file
+  const apiKey = import.meta.env.VITE_API_KEY;
 
-export default App
+  const {} = useLoadScript({'googleMapsApiKey': apiKey});
+  return <div className='app'>Map</div>;
+};
+
+export default App;
