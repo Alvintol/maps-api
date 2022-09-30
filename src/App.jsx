@@ -62,6 +62,7 @@ const App = () => {
     }
   };
 
+  // Prevents browser from auto rerendering back to user location
   useEffect(() => {
     // Takes provided IP position data and returns only the required latitude and longitude
     const getCurrentLatLon = (position) => {
