@@ -18,6 +18,8 @@ const App = () => {
   // Initializes search box to be empty
   const [searchBox, setSearchBox] = useState('');
 
+  const [err, setErr] = useState(false);
+
   // Loads api key/password to maps api in order for map to function
   const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
 
