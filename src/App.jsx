@@ -6,10 +6,12 @@ const App = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
 
   const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
-  
-  !isLoaded ? 
-    <div id='loading'>Loading Map...</div> : 
-    <div id='app'>Map</div>;
+
+  return !isLoaded ? (
+    <div id='loading'>Loading Map...</div>
+  ) : (
+    <div id='app'>Map</div>
+  );
 };
 
 export default App;
