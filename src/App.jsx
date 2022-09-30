@@ -67,8 +67,8 @@ const App = () => {
     <>
       <Map center={mapCenter} />
       <Search
-        search={searchBox}
-        setSearch={setSearchBox}
+        searchBox={searchBox}
+        setSearchBox={setSearchBox}
         getNewLocation={getNewLocation}
       />
     </>

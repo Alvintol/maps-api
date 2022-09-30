@@ -1,12 +1,15 @@
-export const Search = ({ getNewLocation, search, setSearch }) => {
-  
-  const changeHandler = (input) => setSearch((prev) => input);
+export const Search = ({ getNewLocation, searchBox, setSearchBox }) => {
 
+  // Changes SearchBox input field 
+  const changeHandler = (input) => setSearchBox((prev) => input);
+
+  // Changes location and clears the search box of previous input
   const clickHandler = () => {
-    getNewLocation(search)
-    setSearch('');
+    getNewLocation(searchBox);
+    setSearchBox('');
   };
 
+  // Allows the change in put field to work smoothly without interruption 
   const eventHandler = (event) => {
     event.preventDefault();
     changeHandler(event.target.value);
@@ -18,7 +21,7 @@ export const Search = ({ getNewLocation, search, setSearch }) => {
         id='searchBox'
         type='text'
         placeholder='Search'
-        value={search}
+        value={searchBox}
         onChange={eventHandler}
       />
       <button onClick={clickHandler}>Locate</button>
