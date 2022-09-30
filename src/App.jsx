@@ -44,12 +44,15 @@ const App = () => {
       })
       // Conditional if user input returns no data
       .catch((err) => {
+        // Changes err variable to true for 3 seconds
         setErr(true);
         setTimeout(() => {
           setErr(false);
         }, 3000);
       });
   };
+
+
 
   useEffect(() => {
     // Takes provided IP position data and returns only the required latitude and longitude
