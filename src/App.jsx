@@ -1,6 +1,7 @@
 import { useLoadScript } from '@react-google-maps/api';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Alert } from './Alert';
 import './App.css';
 import { Map } from './Map';
 import { Search } from './Search';
@@ -52,7 +53,11 @@ const App = () => {
       });
   };
 
-
+  const locationNotFound = () => {
+    if (err) {
+      return <Alert />;
+    }
+  };
 
   useEffect(() => {
     // Takes provided IP position data and returns only the required latitude and longitude
@@ -73,6 +78,7 @@ const App = () => {
     <div id='loading'>Loading Map...</div>
   ) : (
     <>
+      {locationNotFound}
       <Map center={mapCenter} />
       <Search
         searchBox={searchBox}
