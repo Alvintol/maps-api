@@ -14,9 +14,15 @@ const App = () => {
     lat: 0,
     lng: 0,
   });
+  const [search, setSearch] = useState('');
 
   // Loads api key to maps api in order for map to function
   const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
+
+  const getNewLocation = () => {
+    url;
+    fetch();
+  };
 
   useEffect(() => {
     // Takes provided IP position data and returns only the required latitude and longitude
@@ -38,7 +44,11 @@ const App = () => {
   ) : (
     <>
       <Map center={center} />
-      <Search />
+      <Search
+        search={search}
+        setSearch={setSearch}
+        getNewLocation={getNewLocation}
+      />
     </>
   );
 };

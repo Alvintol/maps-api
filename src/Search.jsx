@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-export const Search = ({ getNewLocation }) => {
-  const [search, setSearch] = useState('');
-
+export const Search = ({ getNewLocation, search, setSearch }) => {
+  
   const changeHandler = (input) => setSearch((prev) => input);
 
   const clickHandler = () => {
