@@ -1,5 +1,6 @@
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import { useLoadScript } from '@react-google-maps/api';
 import './App.css';
+import { Map } from './Map';
 
 const App = () => {
   // Imports secret api key from .env file
@@ -10,7 +11,7 @@ const App = () => {
   return !isLoaded ? (
     <div id='loading'>Loading Map...</div>
   ) : (
-    <div id='app'>Map</div>
+    <Map />
   );
 };
 
