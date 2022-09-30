@@ -1,4 +1,14 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .map-container {
   width: 100vw;
   height: 80vh;
+}
+#search {
+  justify-self: center;
+  align-self: center;
 }
