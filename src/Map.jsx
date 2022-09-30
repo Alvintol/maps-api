@@ -1,12 +1,12 @@
-import { GoogleMap } from '@react-google-maps/api'
-export const Map = () => {
+import { GoogleMap } from '@react-google-maps/api';
+export const Map = ({ center }) => {
   return (
-    <div>
+    <div id='map'>
       <GoogleMap
-      zoom={10}
-      center={{lat: 44, lng:-80}}
-      mapContainerClassName='map-container'
+        zoom={10}
+        center={center}
+        mapContainerClassName='map-container'
       />
     </div>
-  )
-}
+  );
+};

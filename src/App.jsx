@@ -8,10 +8,20 @@ const App = () => {
 
   const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
 
+  function getLatLon(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+      console.log("Latitude is "+latitude);
+      console.log("Longitude is "+longitude);
+  }
+  console.log('NAVIGATOR:', navigator.geolocation.getCurrentPosition(getLatLon))
+
   return !isLoaded ? (
     <div id='loading'>Loading Map...</div>
   ) : (
-    <Map />
+    <Map 
+    center={center}
+    />
   );
 };
 
