@@ -10,25 +10,39 @@ const App = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
 
   // Initializes center of map to be latitude:0 & longitude:0
-  const [center, setCenter] = useState({
+  const [mapCenter, setMapCenter] = useState({
     lat: 0,
     lng: 0,
   });
-  const [search, setSearch] = useState('');
 
-  // Loads api key to maps api in order for map to function
+  // Initializes search box to be empty
+  const [searchBox, setSearchBox] = useState('');
+
+  // Loads api key/password to maps api in order for map to function
   const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
 
+  // Retrieves latitude and longitude coordinates from user input
   const getNewLocation = () => {
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=${apiKey}`;
+    // Dynamic url for retrieving data based on user input
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchBox}&key=${apiKey}`;
+
+    // Checked the api/url for the data
     fetch(url)
+      // Converts data to readable & usable format
       .then((res) => res.json())
       .then((data) => {
+        // Isolates Latitude/Longitude information from translated data
         const { lat, lng } = data.results[0].geometry.location;
-        setCenter({
+
+        // Changes map center to user input location
+        setMapCenter({
           lat,
           lng,
         });
+      })
+      // Conditional if user input returns no data
+      .catch((err) => {
+        setTimeout(() => {}, 3000);
       });
   };
 
@@ -40,7 +54,7 @@ const App = () => {
 
       console.log(lat, lng);
       // Sets map center with IP latitude/longitude
-      setCenter({ lat, lng });
+      setMapCenter({ lat, lng });
     };
 
     // Activates the map to change to users city location
@@ -51,10 +65,10 @@ const App = () => {
     <div id='loading'>Loading Map...</div>
   ) : (
     <>
-      <Map center={center} />
+      <Map center={mapCenter} />
       <Search
-        search={search}
-        setSearch={setSearch}
+        search={searchBox}
+        setSearch={setSearchBox}
         getNewLocation={getNewLocation}
       />
     </>
