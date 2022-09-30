@@ -11,4 +11,12 @@
 #search {
   justify-self: center;
   align-self: center;
+  margin: 2%;
+}
+#searchBox {
+  margin: 2px;
+  font-size: 15pt;
+}
+button {
+  font-size: 15pt;
 }
