@@ -14,18 +14,20 @@ const App = () => {
 
   const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
 
-  // Takes provided position data and returns only the required latitude and longitude
-  const getCurrentLatLon = (position) => {
-    center.latitude = position.coords.latitude;
-    center.longitude = position.coords.longitude;
-    console.log(typeof center.latitude);
-    console.log(typeof center.longitude);
-  };
+  useEffect(() => {
+    // Takes provided position data and returns only the required latitude and longitude
+    const getCurrentLatLon = (position) => {
+      center.latitude = position.coords.latitude;
+      center.longitude = position.coords.longitude;
+      console.log(typeof center.latitude);
+      console.log(typeof center.longitude);
+    };
 
-  navigator.geolocation.getCurrentPosition(getCurrentLatLon);
-  // console.log('GETCURRLATLON:', getCurrentLatLon)
-  console.log('LAT:', center.latitude);
-  console.log('LONG:', center.longitude);
+    navigator.geolocation.getCurrentPosition(getCurrentLatLon);
+    // console.log('GETCURRLATLON:', getCurrentLatLon)
+    console.log('LAT:', center.latitude);
+    console.log('LONG:', center.longitude);
+  }, [center]);
 
   return !isLoaded ? (
     <div id='loading'>Loading Map...</div>
