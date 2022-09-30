@@ -1,10 +1,9 @@
 import { useLoadScript } from '@react-google-maps/api';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Alert } from './Alert';
-import './App.css';
-import { Map } from './Map';
 import { Search } from './Search';
+import { useState } from 'react';
+import { Alert } from './Alert';
+import { Map } from './Map';
+import './App.css';
 
 const App = () => {
   // Imports secret api key from .env file
@@ -19,6 +18,7 @@ const App = () => {
   // Initializes search box to be empty
   const [searchBox, setSearchBox] = useState('');
 
+  // Initializes err variable
   const [err, setErr] = useState(false);
 
   // Loads api key/password to maps api in order for map to function
@@ -45,7 +45,7 @@ const App = () => {
       })
       // Conditional if user input returns no data
       .catch((err) => {
-        // Changes err variable to true for 3 seconds
+        // Changes err variable to true for 3 seconds to allow err pop up to show
         setErr(true);
         setTimeout(() => {
           setErr(false);
