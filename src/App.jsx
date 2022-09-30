@@ -20,8 +20,16 @@ const App = () => {
   const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
 
   const getNewLocation = () => {
-    url;
-    fetch();
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=${apiKey}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        const { lat, lng } = data.results[0].geometry.location;
+        setCenter({
+          lat,
+          lng,
+        });
+      });
   };
 
   useEffect(() => {

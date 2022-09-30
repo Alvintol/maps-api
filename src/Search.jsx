@@ -5,7 +5,7 @@ export const Search = ({ getNewLocation, search, setSearch }) => {
   const changeHandler = (input) => setSearch((prev) => input);
 
   const clickHandler = () => {
-    // getNewLocation()
+    getNewLocation(search)
     console.log(search);
     setSearch('');
   };
