@@ -1,5 +1,3 @@
 export const Alert = () => {
-  return (
-    <div>Alert</div>
-  )
-}
+  return <div id='alert'>Location Not Valid or Found</div>;
+};

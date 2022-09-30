@@ -50,6 +50,7 @@ const App = () => {
         setTimeout(() => {
           setErr(false);
         }, 3000);
+        console.log('Location Not Valid or Found');
       });
   };
 
@@ -65,7 +66,6 @@ const App = () => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
-      console.log(lat, lng);
       // Sets map center with IP latitude/longitude
       setMapCenter({ lat, lng });
     };
@@ -78,7 +78,7 @@ const App = () => {
     <div id='loading'>Loading Map...</div>
   ) : (
     <>
-      {locationNotFound}
+      {locationNotFound()}
       <Map center={mapCenter} />
       <Search
         searchBox={searchBox}
