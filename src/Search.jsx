@@ -3,8 +3,17 @@ import { useState } from 'react';
 export const Search = ({ getNewLocation }) => {
   const [search, setSearch] = useState('');
 
-  const changeHandler = (input) => {
-    setSearch((prev) => input);
+  const changeHandler = (input) => setSearch((prev) => input);
+
+  const clickHandler = () => {
+    // getNewLocation()
+    console.log(search);
+    setSearch('');
+  };
+
+  const eventHandler = (event) => {
+    event.preventDefault();
+    changeHandler(event.target.value);
   };
 
   return (
@@ -14,20 +23,9 @@ export const Search = ({ getNewLocation }) => {
         type='text'
         placeholder='Search'
         value={search}
-        onChange={(e) => {
-          e.preventDefault();
-          changeHandler(e.target.value);
-        }}
+        onChange={eventHandler}
       />
-      <button
-        onClick={() => {
-          console.log('test');
-          // getNewLocation()
-          setSearch('');
-        }}
-      >
-        Locate
-      </button>
+      <button onClick={clickHandler}>Locate</button>
     </div>
   );
 };
