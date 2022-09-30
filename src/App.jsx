@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Alert } from './Alert';
 import { Map } from './Map';
 import './App.css';
+import { useEffect } from 'react';
 
 const App = () => {
   // Imports secret api key from .env file
@@ -61,17 +62,19 @@ const App = () => {
     }
   };
 
-  // Takes provided IP position data and returns only the required latitude and longitude
-  const getCurrentLatLon = (position) => {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
+  useEffect(() => {
+    // Takes provided IP position data and returns only the required latitude and longitude
+    const getCurrentLatLon = (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
 
-    // Sets map center with IP latitude/longitude
-    setMapCenter({ lat, lng });
-  };
+      // Sets map center with IP latitude/longitude
+      setMapCenter({ lat, lng });
+    };
 
-  // Activates the map to change to users city location
-  navigator.geolocation.getCurrentPosition(getCurrentLatLon);
+    // Activates the map to change to users city location
+    navigator.geolocation.getCurrentPosition(getCurrentLatLon);
+  }, []);
 
   return !isLoaded ? (
     <div id='loading'>Loading Map...</div>
