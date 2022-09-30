@@ -44,7 +44,10 @@ const App = () => {
       })
       // Conditional if user input returns no data
       .catch((err) => {
-        setTimeout(() => {}, 3000);
+        setErr(true);
+        setTimeout(() => {
+          setErr(false);
+        }, 3000);
       });
   };
 
